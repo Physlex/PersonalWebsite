@@ -16,7 +16,7 @@ SUDO:=createsuperuser
 ### SCRIPTS ##############################################################################
 
 run:
-	${PYI} ${SRC}${ADMIN} ${RUN}
+	${PYI} ${SRC}${ADMIN} ${RUN} --insecure
 
 migrate:
 	${PYI} ${SRC}${ADMIN} ${MIG}

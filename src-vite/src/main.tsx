@@ -1,14 +1,11 @@
-/**
- * Entry level and configuration for the react rendering / application configuration.
- */
-
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { RouterProvider } from 'react-router-dom';
 
-import App from './App.tsx'
+import { layoutRouter } from './Layout.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+        <RouterProvider router = {layoutRouter} future={{v7_startTransition: true}}/>
   </StrictMode>,
 )

@@ -9,8 +9,3 @@ dynamic = ["dependencies"]
 
 [tool.setuptools.dynamic]
 dependencies = {file=["requirements.txt"]}
-
-[tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "nexzones.settings"
-addopts = "--cov=./src"
-python_files = ["test_*.py", "*_test.py", "__tests__/*.py"]
