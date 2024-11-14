@@ -6,6 +6,6 @@ import { layoutRouter } from './Layout.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-        <RouterProvider router = {layoutRouter} future={{v7_startTransition: true}}/>
+    <RouterProvider router = {layoutRouter} future={{v7_startTransition: true}}/>
   </StrictMode>,
 )
