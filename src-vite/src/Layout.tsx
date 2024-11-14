@@ -11,14 +11,15 @@ import {
 } from "react-router-dom";
 
 import { default as App } from './App';
+import { Hero } from './pages';
 
 
 // Just defines the router that will be used in the Layout component to structure our app
 export const layoutRouter = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<App />} >
+        <Route element={<App />} >
+            <Route path="/" element={<Hero />} />
             {/** TODO:
-             * <Route path="hero/" element={<Hero />}/>
              * <Route path="about/" element={<About />}/>
              * <Route path="projects/" element={<Projects />}/>
             */}

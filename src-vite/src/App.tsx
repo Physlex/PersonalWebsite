@@ -5,15 +5,8 @@
 
 
 import { Outlet } from 'react-router-dom';
-import { css } from '@emotion/react';
+import { Header, Footer } from './components';
 
-
-// Various rules for the application base styling
-const appStyles = css`
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0 auto;
-  padding: 10px;
-`;
 
 /**
  * The application entry point.
@@ -23,12 +16,10 @@ const appStyles = css`
 export default function App(): JSX.Element {
   return (
     <div
-      id="app"
-      css={appStyles}>
-      {/* <Header /> */}
-      Hello React!
+      id="app">
+      <Header hidden={false} />
       <Outlet />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
