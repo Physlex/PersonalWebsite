@@ -5,21 +5,45 @@
 
 
 import { Outlet } from 'react-router-dom';
-import { Header, Footer } from './components';
+import { CssBaseline, Box } from '@mui/material';
 
+import { Header, Footer } from './components/app';
+
+
+function Context(): JSX.Element {
+  return (
+    <Box id="context">
+      <Outlet />
+    </Box>
+  );
+}
 
 /**
  * The application entry point.
  * 
  * @returns The application 'root' (entry point), structured via the router.
  */
-export default function App(): JSX.Element {
+export function BaseApp(): JSX.Element {
   return (
-    <div
-      id="app">
-      <Header hidden={false} />
-      <Outlet />
+    <Box id="base-app">
+      <CssBaseline />
+      <Context />
       <Footer />
-    </div>
+    </Box>
+  );
+}
+
+/**
+ * The application layout, with associated navigation bar and other header information.
+ * @returns 
+ */
+export function NavigableApp(): JSX.Element {
+  return (
+    <Box id="app">
+      <CssBaseline />
+      <Header />
+      <Context />
+      <Footer />
+    </Box>
   );
 }

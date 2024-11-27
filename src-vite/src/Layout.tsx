@@ -10,28 +10,35 @@ import {
     Route,
 } from "react-router-dom";
 
-import { default as App } from './App';
+import { BaseApp, NavigableApp } from './App';
 import { Hero } from './pages';
 
+
+// Just removes annoying warnings
+const preventFutureWarning = {
+    future: {
+        v7_fetcherPersist: true,
+        v7_normalizeFormMethod: true,
+        v7_partialHydration: true,
+        v7_relativeSplatPath: true,
+        v7_skipActionErrorRevalidation: true,
+    },
+}
 
 // Just defines the router that will be used in the Layout component to structure our app
 export const layoutRouter = createBrowserRouter(
     createRoutesFromElements(
-        <Route element={<App />} >
-            <Route path="/" element={<Hero />} />
-            {/** TODO:
-             * <Route path="about/" element={<About />}/>
-             * <Route path="projects/" element={<Projects />}/>
-            */}
+        <Route>
+            <Route element={<BaseApp />} >
+                <Route path="/" element={<Hero />} />
+                {/** TODO:
+                 * <Route path="about/" element={<About />}/>
+                 * <Route path="projects/" element={<Projects />}/>
+                */}
+            </Route>
+            <Route element={<NavigableApp />}>
+            </Route>
         </Route>
     ),
-    {
-        future: {
-            v7_fetcherPersist: true,
-            v7_normalizeFormMethod: true,
-            v7_partialHydration: true,
-            v7_relativeSplatPath: true,
-            v7_skipActionErrorRevalidation: true,
-        },
-    }
+    preventFutureWarning
 );
