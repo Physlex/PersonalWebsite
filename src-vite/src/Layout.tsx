@@ -30,11 +30,7 @@ export const layoutRouter = createBrowserRouter(
     createRoutesFromElements(
         <Route>
             <Route element={<BaseApp />} >
-                <Route path="/" element={<Hero />} />
-                {/** TODO:
-                 * <Route path="about/" element={<About />}/>
-                 * <Route path="projects/" element={<Projects />}/>
-                */}
+                <Route path="/" element={<Hero />}/>
             </Route>
             <Route element={<NavigableApp />}>
             </Route>
