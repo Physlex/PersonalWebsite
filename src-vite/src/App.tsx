@@ -3,13 +3,16 @@
  * pages, and components together to create a single-page application.
  */
 
-
 import { Outlet } from 'react-router-dom';
 import { CssBaseline, Box } from '@mui/material';
-
 import { Header, Footer } from './components/app';
+import { LightModeThemeProvider } from './themes/';
 
 
+/**
+ * Generic application context component. Defines an outlet in a named fashion.
+ * @returns The context, rendered with the outline replaced via react-router-dom.
+ */
 function Context(): JSX.Element {
   return (
     <Box id="context">
@@ -25,11 +28,13 @@ function Context(): JSX.Element {
  */
 export function BaseApp(): JSX.Element {
   return (
-    <Box id="base-app">
+    <LightModeThemeProvider>
       <CssBaseline />
-      <Context />
-      <Footer />
-    </Box>
+      <Box className="app">
+        <Context />
+        <Footer />
+      </Box>
+    </LightModeThemeProvider>
   );
 }
 
@@ -39,11 +44,13 @@ export function BaseApp(): JSX.Element {
  */
 export function NavigableApp(): JSX.Element {
   return (
-    <Box id="app">
+    <LightModeThemeProvider>
       <CssBaseline />
-      <Header />
-      <Context />
-      <Footer />
-    </Box>
+      <Box className="navigable-app">
+        <Header />
+        <Context />
+        <Footer />
+      </Box>
+    </LightModeThemeProvider>
   );
 }

@@ -11,6 +11,7 @@ RUN:=runserver
 MIG:=makemigrations
 DB:=migrate
 SUDO:=createsuperuser
+STATIC := collectstatic
 
 
 ### SCRIPTS ##############################################################################
@@ -26,3 +27,6 @@ db:
 
 superuser:
 	${PYI} ${SRC}${ADMIN} ${SUDO}
+
+static:
+	${PYI} ${SRC}${ADMIN} ${STATIC}

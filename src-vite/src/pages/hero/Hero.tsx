@@ -3,25 +3,28 @@
  * page formatting, will be implemented in the appropriately named react component.
  */
 
-import { Grid2 as Grid, Stack, Typography, Divider, Link } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { Grid2 as Grid, Typography, SxProps, Theme } from "@mui/material";
 import { css } from "@emotion/react";
 
-import { Colored } from "../../components/ui";
+import { Colored, Link, Panel } from "../../components/ui";
 
+import { default as ContactForm } from './ContactForm';
+import { default as Timeline, TimelineDetails as Details } from './Timeline';
 
 // TODO: REPLACE WITH MUI THEMES
 
 const DARK_PURPLE_HEX = "#3C096C";
 // const MEDI_PURPLE_HEX = "#5A189A";
 const LIGHT_PURPLE_HEX = "#9D4EDD";
-const LIGHT_ORANGE_HEX = "#FFC880";
+// const LIGHT_ORANGE_HEX = "#FFC880";
 const MEDI_ORANGE_HEX = "#FF9100";
 
 
+/*** COMPONENTS *************************************************************************/
+
 /**
  * Defines the first thing that the user will see when visiting my website. Includes an
- * image defined in 'public' alonsidge some special text.
+ * image defined in 'public' alongside some special text.
  * 
  * Must be wrapped in a grid container to properly render
  * @returns The landing section of the page.
@@ -29,64 +32,40 @@ const MEDI_ORANGE_HEX = "#FF9100";
 function Landing(): JSX.Element {
     const landingTextLength = 6;
     const landingTextVar = "h3";
-
-    const transitionTimeMs = 100;
-    const inlineContactLink = (
-        <Link
-            to="/contact"
-            component={RouterLink}
-            underline="none"
-            css={css`
-                & {
-                    color: ${LIGHT_ORANGE_HEX};
-                    transition: color ${transitionTimeMs}ms;
-                }
-
-                &:hover {
-                    color: ${MEDI_ORANGE_HEX};
-                    cursor: pointer;
-                }
-            `}>
-                here
-        </Link>
-    );
+    const contactLink = <Link
+        to="/contact"
+        color="white"
+        xColor={MEDI_ORANGE_HEX}
+        xTimeMs={200}
+    >
+        here
+    </Link>;
 
     return (
-        <Grid
-            container
-            size={12}
-            height="100vh"
-            width="100%"
-            padding="2%"
-            css={css`
-                background-color: ${DARK_PURPLE_HEX};
-                color: ${LIGHT_PURPLE_HEX};
-            `}>
-            <Grid size={landingTextLength}>
-                <Stack>
-                    <Typography variant={landingTextVar} >
-                        Hi! I'm Alex.
-                        <br />
-                        <Colored color={MEDI_ORANGE_HEX}>Welcome</Colored> to my website!
-                        <br /><br />
-                    </Typography>
-                </Stack>
-                <Typography fontSize={"1.1rem"}>
-                    I'm a Software Engineer focusing on the fields of full-stack web
-                    development and embedded systems!
+        <>
+            <Grid
+                display="flex"
+                flexDirection="column"
+                size={landingTextLength}
+                justifyContent="center"
+                alignItems="center">
+                <Typography margin="0 5%" variant={landingTextVar} >
+                    Hi! I'm <Colored color={MEDI_ORANGE_HEX}>Alex</Colored>. Welcome to my
+                    website!
+                    <br /><br />
+                </Typography>
+                <Typography margin="0 5%" fontSize={"1.1rem"}>
+                    I'm a Software Engineer specializing in full-stack and embedded
+                    systems.
                     <br /><br />
 
-                    I'm a small-time indie dev in the making, league player, hackathon
-                    enjoyer, and all-around a pretty competitive, fun-loving guy!
+                    I'm a hackathon enjoyer, open-source contributor, game developer,
+                    league player, and soon-to-be graduate.
                     <br /><br />
 
-                    On this website is a list of projects I have created or competitions
-                    I have performed in. These include audio-genre classifiers, rocket
-                    telemetry systems, web applications, and more!
-                    <br /><br />
-
-                    you can also find hiring information like my resume and contact
-                    information, which can be found <span>{inlineContactLink}</span>.
+                    To learn more, explore the respective pages of whichever most
+                    interests you. Or, click <span>{contactLink}</span> to go
+                    straight to my software portfolio.
                     <br /><br />
                 </Typography>
             </Grid>
@@ -106,9 +85,10 @@ function Landing(): JSX.Element {
                     >
                 </img>
             </Grid>
-        </Grid>
-    )
+        </>
+    );
 }
+
 
 /**
  * This method defines the hero page, which tells the website visitor:
@@ -120,20 +100,17 @@ function Landing(): JSX.Element {
  * @returns { JSX.Element } The hero page, with associated logic and state.
  */
 export default function Hero(): JSX.Element {
+    const landingStyles = {
+        backgroundColor: DARK_PURPLE_HEX,
+        color: LIGHT_PURPLE_HEX,
+    } as SxProps<Theme>;
+
     return (
         <Grid container spacing={2}>
-            <Landing />
-            <Divider />
-
-            {/* Content */}
-
-            <Grid size={12}></Grid>
-            <Divider />
-
-            {/* CTA */}
-
-            <Grid></Grid>
-            <Divider />
+            <Panel sx={landingStyles} component={<Landing />} />
+            <Panel vh={2} component={<Timeline />} />
+            <Panel component={<Details />} />
+            <Panel component={<ContactForm />} />
         </Grid>
-    )
+    );
 }

@@ -3,7 +3,6 @@ This module defines the urlpatterns for the frontend. Literally just fetches the
 in the `templates` section.
 """
 
-
 from django.urls import re_path
 from django.views.generic import TemplateView
 
