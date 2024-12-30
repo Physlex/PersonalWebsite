@@ -2,10 +2,8 @@
  * TODO: DOCS
  */
 
-
 import React from "react";
 import { Box, AppBar, Toolbar, Typography } from "@mui/material";
-
 
 /**
  * Parameters to pass into the navbar.
@@ -13,22 +11,20 @@ import { Box, AppBar, Toolbar, Typography } from "@mui/material";
  * @param { ReactNode } children
  */
 type NavbarParams = {
-    label: string;
-    children?: React.ReactNode;
-}
+  label: string;
+  children?: React.ReactNode;
+};
 
 /**
  * Navigation bar for the rest of the application.
  */
 export default function Navbar({ label, children }: NavbarParams): JSX.Element {
-    return (
-        <Box id="navbar">
-            <AppBar>
-                <Typography>{label}</Typography>
-                <Toolbar>
-                    {children}
-                </Toolbar>
-            </AppBar>
-        </Box>
-    );
+  return (
+    <Box id="navbar">
+      <AppBar>
+        <Typography>{label}</Typography>
+        <Toolbar>{children}</Toolbar>
+      </AppBar>
+    </Box>
+  );
 }

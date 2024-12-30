@@ -3,11 +3,7 @@
  * email via the operating system presets.
  */
 
-
 // TODO
 export default function ContactForm(): JSX.Element {
-    return (
-        <>
-        </>
-    );
+  return <></>;
 }

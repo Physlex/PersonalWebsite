@@ -2,10 +2,8 @@
  * Defines the header for the base application.
  */
 
-
-import { Box } from '@mui/material';
-import { default as Navbar } from './Navbar';
-
+import { Box } from "@mui/material";
+import { default as Navbar } from "./Navbar";
 
 /**
  * This component defines the header for the application.
@@ -13,10 +11,7 @@ import { default as Navbar } from './Navbar';
  * @returns { JSX.Element } The header component.
  */
 export default function Header(): JSX.Element {
-    return (
-        <Box id="header">{
-            <Navbar label="Alexanders Portfolio">
-            </Navbar>
-        }</Box>
-    );
+  return (
+    <Box id="header">{<Navbar label="Alexanders Portfolio"></Navbar>}</Box>
+  );
 }

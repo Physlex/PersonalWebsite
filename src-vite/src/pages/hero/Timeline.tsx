@@ -5,16 +5,10 @@
 
 // TODO: Implement
 export default function Timeline(): JSX.Element {
-    return (
-        <>
-        </>
-    );
+  return <></>;
 }
 
 // TODO: Implement
 export function TimelineDetails(): JSX.Element {
-    return (
-        <>
-        </>
-    );
+  return <></>;
 }

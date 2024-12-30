@@ -3,11 +3,10 @@
  * pages, and components together to create a single-page application.
  */
 
-import { Outlet } from 'react-router-dom';
-import { CssBaseline, Box } from '@mui/material';
-import { Header, Footer } from './components/app';
-import { LightModeThemeProvider } from './themes/';
-
+import { Outlet } from "react-router-dom";
+import { CssBaseline, Box } from "@mui/material";
+import { Header, Footer } from "./components/app";
+import { LightModeThemeProvider } from "./themes/";
 
 /**
  * Generic application context component. Defines an outlet in a named fashion.
@@ -23,7 +22,7 @@ function Context(): JSX.Element {
 
 /**
  * The application entry point.
- * 
+ *
  * @returns The application 'root' (entry point), structured via the router.
  */
 export function BaseApp(): JSX.Element {
@@ -40,7 +39,7 @@ export function BaseApp(): JSX.Element {
 
 /**
  * The application layout, with associated navigation bar and other header information.
- * @returns 
+ * @returns
  */
 export function NavigableApp(): JSX.Element {
   return (

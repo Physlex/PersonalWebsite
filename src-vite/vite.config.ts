@@ -2,10 +2,8 @@
  * Configuration details for Vite.
  */
 
-
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 /**
  * Defines the configuration details. Allows linting due to `defineConfig`, but is
@@ -25,7 +23,7 @@ export default defineConfig({
     emptyOutDir: true,
     manifest: true,
     rollupOptions: {
-      input: "src/main.tsx"
-    }
-  }
-})
+      input: "src/main.tsx",
+    },
+  },
+});
