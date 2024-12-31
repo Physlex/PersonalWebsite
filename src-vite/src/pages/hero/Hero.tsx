@@ -3,8 +3,9 @@
  * page formatting, will be implemented in the appropriately named react component.
  */
 
-import { Grid2 as Grid, Typography, SxProps, Theme } from "@mui/material";
+import { Grid2 as Grid, Typography } from "@mui/material";
 import { useTheme } from "@mui/material";
+import { css } from "@emotion/react";
 
 import { Colored, Link, Panel } from "../../components/ui";
 
@@ -72,20 +73,27 @@ function Landing(): JSX.Element {
  * @returns { JSX.Element } The hero page, with associated logic and state.
  */
 export default function Hero(): JSX.Element {
+  // Compose the styling of the frontend
   const theme = useTheme();
 
-  const noiseUrl = "static/assets/hero/noise.svg";
-  const landingStyles = {
-    background: `
-      linear-gradient(0deg, ${theme.palette.primary.dark}, black),
-      url(${noiseUrl});
-    `,
-    color: "white",
-  } as SxProps<Theme>;
+  const noiseUrl = "/static/assets/hero/noise.svg";
+  const fromColor = theme.palette.primary.light;
+  const toColor = theme.palette.primary.main;
+  const backgroundJunk = `
+    background: linear-gradient(60deg, ${fromColor}, ${toColor}), url("${noiseUrl}");
+    background-blend-mode: color;
+    color: white;
+  `;
 
   return (
-    <Grid container spacing={2}>
-      <Panel sx={landingStyles} component={<Landing />} />
+    <Grid
+      css={css`
+        ${backgroundJunk}
+      `}
+      container
+      spacing={2}
+    >
+      <Panel component={<Landing />} />
       <Panel vh={2} component={<Timeline />} />
       <Panel component={<Details />} />
       <Panel component={<ContactForm />} />

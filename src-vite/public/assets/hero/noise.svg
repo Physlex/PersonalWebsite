@@ -1,14 +1,14 @@
 <svg
     version="1.1"
-    width="300"
-    height="200"
+    width="400"
+    height="400"
     xmlns="http://www.w3.org/2000/svg"
 >
     <filter id="heroNoiseFilter">
         <feTurbulence
             type="fractalNoise"
-            baseFrequency="1000"
-            numOctaves="10"
+            baseFrequency="1"
+            numOctaves="1"
             stitchTiles="stitch"
         />
     </filter>
