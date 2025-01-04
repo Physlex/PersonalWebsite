@@ -73,14 +73,17 @@ function Landing(): JSX.Element {
  * @returns { JSX.Element } The hero page, with associated logic and state.
  */
 export default function Hero(): JSX.Element {
-  // Compose the styling of the frontend
   const theme = useTheme();
 
-  const noiseUrl = "/static/assets/hero/noise.svg";
   const fromColor = theme.palette.primary.light;
   const toColor = theme.palette.primary.main;
+  const gradRotDeg = 60;
+  const noiseUrl = "/static/assets/hero/noise.svg";
+
   const backgroundJunk = `
-    background: linear-gradient(60deg, ${fromColor}, ${toColor}), url("${noiseUrl}");
+    background: linear-gradient(
+      ${gradRotDeg}deg, ${fromColor}, ${toColor}), url("${noiseUrl}"
+    );
     background-blend-mode: color;
     color: white;
   `;
