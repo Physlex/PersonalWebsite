@@ -1,6 +1,7 @@
 /**
- * This file defines the module interface for the hero page. All private components, and
- * page formatting, will be implemented in the appropriately named react component.
+ * This file defines the module interface for the hero page. All private
+ * components, and page formatting, will be implemented in the appropriately
+ * named react component.
  */
 
 import { Grid2 as Grid, Typography } from "@mui/material";
@@ -12,9 +13,11 @@ import { Colored, Link, Panel } from "../../components/ui";
 import { default as ContactForm } from "./ContactForm";
 import { default as Timeline, TimelineDetails as Details } from "./Timeline";
 
+/** COMPONENTS ***************************************************************/
+
 /**
- * Defines the first thing that the user will see when visiting my website. Includes an
- * image defined in 'public' alongside some special text.
+ * Defines the first thing that the user will see when visiting my website.
+ * Includes an image defined in 'public' alongside some special text.
  *
  * Must be wrapped in a grid container to properly render
  * @returns The landing section of the page.
@@ -61,6 +64,33 @@ function Landing(): JSX.Element {
   );
 }
 
+
+/** STYLING ******************************************************************/
+
+const HB_NOISE_URL = "/static/assets/hero/noise.svg";
+const HB_GRADIENT = `linear-gradient(to bottom right, #4004a1, #2803ad)`;
+
+const HERO_BACKGROUND = css`
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: ${HB_GRADIENT}, url("${HB_NOISE_URL}");
+    filter: contrast(170%) brightness(1000%);
+    z-index: 1;
+  }
+
+  & > * {
+    position: relative;
+    z-index: 2;
+  }
+`;
+
+/** PAGE **********************************************************************/
+
 /**
  * This method defines the hero page, which tells the website visitor:
  * - Who you are
@@ -71,34 +101,16 @@ function Landing(): JSX.Element {
  * @returns { JSX.Element } The hero page, with associated logic and state.
  */
 export default function Hero(): JSX.Element {
-  const noiseUrl = "/static/assets/hero/noise.svg";
-  const gradient = `linear-gradient(to bottom right, #4004a1, #2803ad)`;
-
-  const background = css`
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: ${gradient}, url("${noiseUrl}");
-      filter: contrast(170%) brightness(1000%);
-      z-index: 1;
-    }
-
-    & > * {
-      position: relative;
-      z-index: 2;
-    }
-  `;
+  const panels = [
+    <Panel component={<Landing />} />,
+    <Panel vh={2} component={<Timeline />} />,
+    <Panel component={<Details />} />,
+    <Panel component={<ContactForm />} />
+  ]
 
   return (
-    <Grid css={background} container spacing={2}>
-      <Panel component={<Landing />} />
-      <Panel vh={2} component={<Timeline />} />
-      <Panel component={<Details />} />
-      <Panel component={<ContactForm />} />
+    <Grid css={HERO_BACKGROUND} container spacing={2}>
+      {panels && panels.map((panel) => { return panel; })}
     </Grid>
   );
 }
