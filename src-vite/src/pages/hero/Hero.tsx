@@ -4,15 +4,13 @@
  */
 
 import { Grid2 as Grid, Typography } from "@mui/material";
-import { useTheme } from "@mui/material";
+
 import { css } from "@emotion/react";
 
 import { Colored, Link, Panel } from "../../components/ui";
 
 import { default as ContactForm } from "./ContactForm";
 import { default as Timeline, TimelineDetails as Details } from "./Timeline";
-
-/*** COMPONENTS *************************************************************************/
 
 /**
  * Defines the first thing that the user will see when visiting my website. Includes an
@@ -73,29 +71,30 @@ function Landing(): JSX.Element {
  * @returns { JSX.Element } The hero page, with associated logic and state.
  */
 export default function Hero(): JSX.Element {
-  const theme = useTheme();
-
-  const fromColor = theme.palette.primary.light;
-  const toColor = theme.palette.primary.main;
-  const gradRotDeg = 60;
   const noiseUrl = "/static/assets/hero/noise.svg";
+  const gradient = `linear-gradient(to bottom right, #4004a1, #2803ad)`;
 
-  const backgroundJunk = `
-    background: linear-gradient(
-      ${gradRotDeg}deg, ${fromColor}, ${toColor}), url("${noiseUrl}"
-    );
-    background-blend-mode: color;
-    color: white;
+  const background = css`
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: ${gradient}, url("${noiseUrl}");
+      filter: contrast(170%) brightness(1000%);
+      z-index: 1;
+    }
+
+    & > * {
+      position: relative;
+      z-index: 2;
+    }
   `;
 
   return (
-    <Grid
-      css={css`
-        ${backgroundJunk}
-      `}
-      container
-      spacing={2}
-    >
+    <Grid css={background} container spacing={2}>
       <Panel component={<Landing />} />
       <Panel vh={2} component={<Timeline />} />
       <Panel component={<Details />} />
