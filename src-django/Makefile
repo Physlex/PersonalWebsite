@@ -16,6 +16,14 @@ STATIC := collectstatic
 
 ### SCRIPTS ##############################################################################
 
+help:
+	@echo "Commands:"
+	@echo "  run      \t\tRuns the server on port 8000"
+	@echo "  migrate  \t\tCreates django ORM migrations tables for the database"
+	@echo "  db       \t\tUses the created ORM migration tables to commit to the migration"
+	@echo "  superuser\t\tAllows creation of an admin to access the admin site"
+	@echo "  static   \t\tCollects static asset files"
+
 run:
 	${PYI} ${SRC}${ADMIN} ${RUN} --insecure
 
