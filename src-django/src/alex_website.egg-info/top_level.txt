@@ -1,5 +1,0 @@
-api
-frontend
-manage
-static
-website
