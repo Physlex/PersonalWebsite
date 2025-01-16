@@ -68,8 +68,20 @@ $ make run
 Which should output something like:
 
 ```bash
+python3 src/manage.py runserver --insecure
+Watching for file changes with StatReloader
+Performing system checks...
 
+System check identified no issues (0 silenced).
+January 16, 2025 - 00:15:54
+Django version 5.1.3, using settings 'website.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
 ```
+
+If so, perfect! You can now officially check out my (WIP) website!
+
+Again, please note, that it's a work in progress. I will only consider it done when it's hosted via AWS or Heroku.
 
 ## Contributing
 
